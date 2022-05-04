@@ -1,0 +1,21 @@
+
+//CREATE A MAP AND STORE A ARRAYS VALUES AND SEARCH THE VALUE TARGET-ARR[INDEX_VALUE] IF FIND IN MAP STORE IN VECTOR (INDEX ,MP[TARGET-ARR[INDEX_VALUE]) 
+
+vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int>v;
+        map<int,int>mp;
+        for(int i=0;i<nums.size();i++)
+        {
+            mp[nums[i]]=i;
+            
+        }
+        for(int j=0;j<nums.size();j++)
+        {
+            if(mp.find(target-nums[j])!=mp.end()){
+                v.push_back(j);
+                v.push_back(mp[target-nums[j]]);
+                break;
+            }
+        }
+        return v;
+    }
