@@ -1,0 +1,25 @@
+//sort the array then find the difference between range and maintain two pointer between range
+
+
+
+
+ long long findMinDiff(vector<long long> a, long long n, long long m){
+    //code
+    
+        sort(a.begin(),a.end());
+        
+        
+        long long  low=0;
+        
+        long long high=low+m-1;
+        long long  ans=INT_MAX;
+        while(high<n)
+        {
+            long long sum=a[high]-a[low];
+            ans=min(sum,ans);
+            low++;
+            high++;
+        }
+        return ans;
+    
+    }  
