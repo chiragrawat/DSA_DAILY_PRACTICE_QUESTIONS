@@ -1,0 +1,21 @@
+vector<int>ans;
+        vector<int>visited;
+    void solve(int node,vector<int> adj[])
+    {
+        ans.push_back(node);
+        visited[node]=1;
+        for(auto it: adj[node])
+        {
+            if(visited[it]==0)
+            solve(it,adj);
+        }
+        
+    }
+    vector<int> dfsOfGraph(int V, vector<int> adj[]) {
+        // Code here
+       visited.resize(V,0);
+        solve(0,adj);
+        return ans;
+        
+        
+    }
