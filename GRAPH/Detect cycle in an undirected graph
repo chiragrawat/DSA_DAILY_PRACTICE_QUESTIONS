@@ -1,0 +1,33 @@
+ bool solve(int i,int par,vector<int>&vis,vector<int> adj[])
+    {
+        
+        vis[i]=1;
+        for(auto it:adj[i])
+        {
+            if(!vis[it])
+            {
+                bool c=solve(it,i,vis,adj);
+                if(c==true)
+                return true;
+            }
+            else if(it!=par)
+            return true;
+        }
+        
+        return false;
+    }
+    bool isCycle(int V, vector<int> adj[]) {
+        // Code here
+    
+        vector<int>vis(V,0);
+        for(int i=0;i<V;i++)
+        {
+            if(!vis[i])
+            {
+                bool c=solve(i,-1,vis,adj);
+                if(c==true)
+                return true;
+            }
+        }
+        return false;
+    }
