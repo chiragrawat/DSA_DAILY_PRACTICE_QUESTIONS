@@ -1,0 +1,38 @@
+// Search half array then search other half array
+
+
+void solve(int A[],int low,int high,int key,int &ans)
+    {
+    while(low<=high)
+    {
+        int mid=low+((high-low)/2);
+        if(A[mid]==key){
+        ans= mid;
+        break;
+        }
+        else if(A[mid]<key) 
+        low=mid+1;
+        else
+        high=mid-1;
+        
+    }
+
+        
+    }
+    
+    int search(int A[], int low, int high, int key){
+    //complete the function here
+    int breakp=0;
+    int ans=-1;
+    for(int i=0;i<high;i++)
+    {
+        if(A[i]>A[i+1])
+        {
+            breakp=i;
+            break;
+        }
+    }
+        solve(A,low, breakp,key,ans);
+        solve(A, breakp,high,key,ans);
+        return ans;
+    }
