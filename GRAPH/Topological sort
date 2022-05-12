@@ -1,0 +1,35 @@
+// we travese the graph through dfs travesel then we push the node in stack 
+// Note if its not possible to Topological sort then when we have cyclic graph
+
+
+	void topologicalsort(int node,  vector<int>&visited, stack<int>&s,vector<int> adj[])
+	{
+	    visited[node]=1;
+	    for(auto it:adj[node])
+	    {
+	        if(!visited[it])
+	        topologicalsort(it,visited,s,adj);
+	    }
+	    s.push(node);
+	}
+	
+	vector<int> topoSort(int V, vector<int> adj[]) 
+	{
+	    // code here
+	    vector<int>visited(V,0);
+	    stack<int>s;
+	    for(int i=0;i<V;i++)
+	    {
+	        if(!visited[i])
+	        {
+	            topologicalsort(i,visited,s,adj);
+	        }
+	    }
+	    vector<int>ans;
+	    while(!s.empty())
+	    {
+	        ans.push_back(s.top());
+	        s.pop();
+	    }
+	    return ans;
+	}
