@@ -1,0 +1,23 @@
+class Solution {
+public:
+    void solve(int i,int j,int newColor,int m,int n,int oldcolor,        vector<vector<int>>&vis,vector<vector<int>>& image)
+    {
+        if(i<0|| j<0|| i>=m|| j>=n)return;
+        if(vis[i][j] || image[i][j]!=oldcolor)return ;
+        vis[i][j]=1;
+        image[i][j]=newColor;
+         solve(i+1,j,newColor,m,n,oldcolor,vis,image);
+ solve(i-1,j,newColor,m,n,oldcolor,vis,image);
+ solve(i,j+1,newColor,m,n,oldcolor,vis,image);
+ solve(i,j-1,newColor,m,n,oldcolor,vis,image);
+        
+    }
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newColor) {
+        int x=image.size();
+        int y=image[0].size();
+        int oldcolor=image[sr][sc];
+        vector<vector<int>>vis(x,vector<int>(y,0));
+        solve(sr,sc,newColor,x,y,oldcolor,vis,image);
+        return image;
+    }
+};
