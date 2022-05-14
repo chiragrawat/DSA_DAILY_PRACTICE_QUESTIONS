@@ -1,3 +1,5 @@
+
+visited array is optional
 class Solution {
 public:
     void solve(int i,int j,int newColor,int m,int n,int oldcolor,        vector<vector<int>>&vis,vector<vector<int>>& image)
