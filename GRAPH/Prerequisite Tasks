@@ -1,0 +1,40 @@
+// first create directed graph
+//second detcet is cyclic contain or not if cyclic contain then retur false otherwise return true
+
+bool solve(int i,vector<int>&order,vector<int>&vis,vector<int> adj[])
+    {
+        vis[i]=1;
+        order[i]=1;
+        for(auto it:adj[i])
+        {
+            if(!vis[it])
+            {
+                bool conf=solve(it,order,vis,adj);
+                if(conf==true)
+                return true;
+                
+            }
+            else if(order[it])
+            return true;
+        }
+        order[i]=0;
+        return false;
+    }
+   
+	bool isPossible(int N, vector<pair<int, int> >& prerequisites) {
+	    // Code here
+	    vector<int>adj[N];
+	    for(auto it:prerequisites)
+	    adj[it.first].push_back(it.second);
+	        vector<int>order(N,0);
+        vector<int>vis(N,0);
+        for(int i=0;i<N;i++)
+        {
+            if(!vis[i]){
+            bool c=solve(i,order,vis,adj);
+            if(c==true)
+            return false;}
+        }
+        return true;
+	}
+  
