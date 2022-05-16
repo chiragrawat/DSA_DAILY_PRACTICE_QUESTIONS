@@ -1,0 +1,23 @@
+//throug adjeceney matrix
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+   // where n is node and m is edges
+    int n,m;
+    cin>>n>>m;
+    //create adjeceney list of size number of nodes
+    int arr[n+1][n+1];
+    for(int i=0;i<n;i++)
+    {
+        int u,v;
+        cin>>u>>v;
+        arr[u][v]=1;
+        arr[v][u]=1;
+    }
+    return 0;
+}
+
+// this method is worst because its take space complexty  is (n*n)
