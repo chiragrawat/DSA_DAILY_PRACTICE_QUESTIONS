@@ -8,7 +8,7 @@ int main()
    // where n is node and m is edges
     int n,m;
     cin>>n>>m;
-    //create adjeceney list of size number of nodes
+    //create adjeceney matrix of size number of nodes
     int arr[n+1][n+1];
     for(int i=0;i<n;i++)
     {
