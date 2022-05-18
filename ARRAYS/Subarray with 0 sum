@@ -1,0 +1,18 @@
+ bool subArrayExists(int arr[], int n)
+    {
+        //Your code here
+        set<int>st;
+        int i=0;
+        int sum=0;
+        while(i<n)
+        {
+            sum+=arr[i];
+            i++;
+            if(st.find(sum)!=st.end())return true;
+            if(sum==0)
+            return true;
+            
+            st.insert(sum);
+        }
+        return false;
+    }
