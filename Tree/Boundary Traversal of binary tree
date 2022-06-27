@@ -1,0 +1,44 @@
+    void lefttravesel(Node *root,vector<int>&ans)
+    {
+        if(root==NULL || (root->left==NULL && root->right==NULL))
+        return ;
+        ans.push_back(root->data);
+        if(root->left)
+            lefttravesel(root->left,ans);
+            else
+            lefttravesel(root->right,ans);
+    }
+    void leafnode(Node *root,vector<int>&ans)
+    {
+        if(root==NULL)
+        return;
+        if(root->left==NULL && root->right==NULL)
+        {
+            ans.push_back(root->data);
+        }
+        leafnode(root->left,ans);
+         leafnode(root->right,ans);
+    }
+        void righttravesel(Node *root,vector<int>&ans)
+    {
+        if(root==NULL || (root->left==NULL && root->right==NULL))
+        return ;
+        if(root->right)
+            righttravesel(root->right,ans);
+            else
+            righttravesel(root->left,ans);
+            ans.push_back(root->data);
+    }
+    vector <int> boundary(Node *root)
+    {
+        vector<int>ans;
+        //Your code here
+        if(root==NULL)
+        return ans;
+        ans.push_back(root->data);
+        lefttravesel(root->left,ans);
+        leafnode(root->left,ans);
+        leafnode(root->right,ans);
+        righttravesel(root->right,ans);
+        return ans;
+    }
