@@ -1,0 +1,29 @@
+    vector<int> rightView(Node *root)
+    {
+    
+        vector<int>v;
+    if(root==NULL)
+        return v;
+        
+    queue<Node*>q;
+    q.push(root);
+        while(!q.empty())
+        {
+            Node *curr;
+            int n=q.size();
+            for(int i=0;i<n;i++)//CHANGES IN THE RANGES TO  COVERT IT TO LEFT FORM RIGHT
+            {
+            curr=q.front();
+            q.pop();
+            if(i==n-1)
+           v.push_back(curr->data);
+             if(curr->left)
+            q.push(curr->left);
+            
+                if(curr->right)
+                    q.push(curr->right);
+            }
+
+        }
+return v;
+}
